@@ -1,49 +1,119 @@
-idx = 0 / 32
-idx = 1 / 32
-idx = 2 / 32
-idx = 3 / 32
-idx = 4 / 32
-idx = 5 / 32
-idx = 6 / 32
-idx = 7 / 32
-idx = 8 / 32
-idx = 9 / 32
-idx = 10 / 32
-idx = 11 / 32
-idx = 12 / 32
-idx = 13 / 32
-idx = 14 / 32
-idx = 15 / 32
-idx = 16 / 32
-idx = 17 / 32
-idx = 18 / 32
-idx = 19 / 32
-idx = 20 / 32
-idx = 21 / 32
-idx = 22 / 32
-idx = 23 / 32
-idx = 24 / 32
-idx = 25 / 32
-idx = 26 / 32
-idx = 27 / 32
-idx = 28 / 32
-idx = 29 / 32
-idx = 30 / 32
-idx = 31 / 32
-idx = 0 / 32
-idx = 16 / 32
+image_idx = 29 / 32
+WARNING: The parameter "ResampleInterpolator", requested at entry number 0, does not exist at all.
+  The default value "FinalBSplineInterpolator" is used instead.
+WARNING: The parameter "Resampler", requested at entry number 0, does not exist at all.
+  The default value "DefaultResampler" is used instead.
+ELASTIX version: 5.0.1
+Command line options from ElastixBase:
+-out      ./
+-threads  unspecified, so all available threads are used
+-def      unspecified, so no input points transformed
+-jac      unspecified, so no det(dT/dx) computed
+-jacmat   unspecified, so no dT/dx computed
+
+Reading input image ...
+  Reading input image took 0.000003 s
+Calling all ReadFromFile()'s ...
+WARNING: The parameter "FinalBSplineInterpolationOrder", requested at entry number 0, does not exist at all.
+  The default value "3" is used instead.
+WARNING: The parameter "InitialTransformParametersFileName", requested at entry number 0, does not exist at all.
+  The default value "NoInitialTransform" is used instead.
+WARNING: The parameter "HowToCombineTransforms", requested at entry number 0, does not exist at all.
+  The default value "Compose" is used instead.
+  Calling all ReadFromFile()'s took 0.000110 s
+Transforming points ...
+  The command-line option "-def" is not used, so no points are transformed
+  Transforming points done, it took 0.00s
+Compute determinant of spatial Jacobian ...
+  The command-line option "-jac" is not used, so no det(dT/dx) computed.
+  Computing determinant of spatial Jacobian done, it took 0.00s
+Compute spatial Jacobian (full matrix) ...
+  The command-line option "-jacmat" is not used, so no dT/dx computed.
+  Computing spatial Jacobian done, it took 0.00s
+Resampling image and writing to disk ...
+  Resampling took 1.01s
+image_idx = 30 / 32
+WARNING: The parameter "ResampleInterpolator", requested at entry number 0, does not exist at all.
+  The default value "FinalBSplineInterpolator" is used instead.
+WARNING: The parameter "Resampler", requested at entry number 0, does not exist at all.
+  The default value "DefaultResampler" is used instead.
+ELASTIX version: 5.0.1
+Command line options from ElastixBase:
+-out      ./
+-threads  unspecified, so all available threads are used
+-def      unspecified, so no input points transformed
+-jac      unspecified, so no det(dT/dx) computed
+-jacmat   unspecified, so no dT/dx computed
+
+Reading input image ...
+  Reading input image took 0.000002 s
+Calling all ReadFromFile()'s ...
+WARNING: The parameter "FinalBSplineInterpolationOrder", requested at entry number 0, does not exist at all.
+  The default value "3" is used instead.
+WARNING: The parameter "InitialTransformParametersFileName", requested at entry number 0, does not exist at all.
+  The default value "NoInitialTransform" is used instead.
+WARNING: The parameter "HowToCombineTransforms", requested at entry number 0, does not exist at all.
+  The default value "Compose" is used instead.
+  Calling all ReadFromFile()'s took 0.000053 s
+Transforming points ...
+  The command-line option "-def" is not used, so no points are transformed
+  Transforming points done, it took 0.00s
+Compute determinant of spatial Jacobian ...
+  The command-line option "-jac" is not used, so no det(dT/dx) computed.
+  Computing determinant of spatial Jacobian done, it took 0.00s
+Compute spatial Jacobian (full matrix) ...
+  The command-line option "-jacmat" is not used, so no dT/dx computed.
+  Computing spatial Jacobian done, it took 0.00s
+Resampling image and writing to disk ...
+  Resampling took 1.03s
+image_idx = 31 / 32
+WARNING: The parameter "ResampleInterpolator", requested at entry number 0, does not exist at all.
+  The default value "FinalBSplineInterpolator" is used instead.
+WARNING: The parameter "Resampler", requested at entry number 0, does not exist at all.
+  The default value "DefaultResampler" is used instead.
+ELASTIX version: 5.0.1
+Command line options from ElastixBase:
+-out      ./
+-threads  unspecified, so all available threads are used
+-def      unspecified, so no input points transformed
+-jac      unspecified, so no det(dT/dx) computed
+-jacmat   unspecified, so no dT/dx computed
+
+Reading input image ...
+  Reading input image took 0.000002 s
+Calling all ReadFromFile()'s ...
+WARNING: The parameter "FinalBSplineInterpolationOrder", requested at entry number 0, does not exist at all.
+  The default value "3" is used instead.
+WARNING: The parameter "InitialTransformParametersFileName", requested at entry number 0, does not exist at all.
+  The default value "NoInitialTransform" is used instead.
+WARNING: The parameter "HowToCombineTransforms", requested at entry number 0, does not exist at all.
+  The default value "Compose" is used instead.
+  Calling all ReadFromFile()'s took 0.000046 s
+Transforming points ...
+  The command-line option "-def" is not used, so no points are transformed
+  Transforming points done, it took 0.00s
+Compute determinant of spatial Jacobian ...
+  The command-line option "-jac" is not used, so no det(dT/dx) computed.
+  Computing determinant of spatial Jacobian done, it took 0.00s
+Compute spatial Jacobian (full matrix) ...
+  The command-line option "-jacmat" is not used, so no dT/dx computed.
+  Computing spatial Jacobian done, it took 0.00s
+Resampling image and writing to disk ...
+  Resampling took 1.07s
+result_volume[0].shape = (3000, 7000)
 Traceback (most recent call last):
-  File "/home/twoller/AMST2/squirrel/run_prealignment_test.py", line 83, in <module>
+  File "/home/twoller/AMST2/squirrel/run_prealignment_test.py", line 101, in <module>
     run_prealignment()
-  File "/home/twoller/AMST2/squirrel/run_prealignment_test.py", line 54, in run_prealignment
-    dot_product_on_affines_workflow(
-  File "/home/twoller/AMST2/squirrel/squirrel/workflows/transformation.py", line 600, in dot_product_on_affines_workflow
-    out_transforms = transforms[0] * transforms[1]
-                     ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
-  File "/home/twoller/AMST2/squirrel/squirrel/library/affine_matrices.py", line 225, in __mul__
-    stack=[self[idx] * other[idx] for idx in range(len(self))],
-                       ~~~~~^^^^^
-  File "/home/twoller/AMST2/squirrel/squirrel/library/affine_matrices.py", line 182, in __getitem__
-    return self._stack[item]
-           ~~~~~~~~~~~^^^^^^
-IndexError: list index out of range
+  File "/home/twoller/AMST2/squirrel/run_prealignment_test.py", line 63, in run_prealignment
+    elastix_stack_alignment_workflow(
+  File "/home/twoller/AMST2/squirrel/squirrel/workflows/elastix.py", line 276, in elastix_stack_alignment_workflow
+    stack, stack_size = load_data_handle(stack, key=key, pattern=pattern)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/twoller/AMST2/squirrel/squirrel/library/io.py", line 200, in load_data_handle
+    h = TiffStack(path, pattern=pattern if pattern is not None else '*.tif')
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/twoller/AMST2/squirrel/squirrel/library/io.py", line 235, in __init__
+    self.dtype = self[0].dtype
+                 ~~~~^^^
+  File "/home/twoller/AMST2/squirrel/squirrel/library/io.py", line 244, in __getitem__
+    filepaths = list.__getitem__(self, item)
