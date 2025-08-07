@@ -38,9 +38,19 @@ def run_prealignment():
         gaussian_sigma=parameter_dict['sbs_alignment']['gaussian_sigma']
 
     )
-
+    apply_multi_step_stack_alignment_workflow(
+            image_stack=input_dirpath,
+            transform_paths=[os.path.join(output_dirpath, 'elastix_sbs.json')],  # List of transform files
+            out_filepath=os.path.join(output_dirpath, 'sbs_prealignment'),
+            pattern='*.tif', # was set to '*.tif' in the original code
+            auto_pad=True,      
+            target_image_shape=None, 
+            z_range=None,       # Use all slices
+            n_workers=1,        
+            verbose=True        # Was set to True in the original code
+        )
     elastix_stack_alignment_workflow(
-        stack=input_dirpath,
+        stack=os.path.join(output_dirpath, 'sbs_prealignment'),
         out_filepath=os.path.join(output_dirpath, "elastix_nsbs.json"),
         transform='translation',  # or 'rigid', 'affine', 'translation'
         pattern='*.tif',
@@ -58,25 +68,22 @@ def run_prealignment():
         ],
         os.path.join(output_dirpath, 'combined.json'),
         keep_meta=0,
-     #   verbose=verbose # is it needed?
     )
 
     apply_auto_pad_workflow(
         os.path.join(output_dirpath, 'combined.json'),
         os.path.join(output_dirpath, 'nsbs-pre-align.json'),
-      #  verbose=verbose # is it needed?
     )
 
     apply_multi_step_stack_alignment_workflow(
             image_stack=input_dirpath,
-            transform_paths=os.path.join(output_dirpath, 'nsbs-pre-align.json'),  # List of transform files
+            transform_paths=[os.path.join(output_dirpath, 'nsbs-pre-align.json')],  # List of transform files
             out_filepath=os.path.join(output_dirpath, 'prealigned_file'),
             pattern='*.tif',
             auto_pad=True,      
             target_image_shape=None, 
             z_range=None,       # Use all slices
             n_workers=1,        
-            verbose=False        # Was set to True in the original code
         )
 
 if __name__ == "__main__":
