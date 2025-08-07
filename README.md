@@ -22,4 +22,6 @@
 python  prealignment.py
 # for amst and so far I have added the amst.py in squirrel
 python  amst.py
+# to test the align validation
+python test_align.py --stack gt_amst/ --out_dirpath ../results/ --rois "4,536,1916,20,256,256" --method 'elastix'
 ```
