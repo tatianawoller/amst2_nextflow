@@ -45,7 +45,7 @@ def run_amst():
     elastix_param_files = glob.glob("elastix_params_amst_dummy.txt")
     amst_workflow(
         pre_align_dirpath,
-        output_dirpath,
+        os.path.join(output_dirpath,'amst-transforms.json'),
         raw_stack=None,
         pre_align_key='data',
         pre_align_pattern='*.tif',
