@@ -10,7 +10,7 @@ general:
     #pre_align_transforms: /path/to/pre-alignment-transforms.json  # Defaults to <output_dirpath>/nsbs-pre-align.json
   pre_align_transforms: /home/twoller/AMST2/squirrel/elastix_params_amst_dummy.txt  # Defaults to <output_dirpath>/nsbs-pre-align.json
     # <<<run
-  output_dirpath: /path/to/target/directory
+  output_dirpath: /home/twoller/AMST2/results
   cores: 8
   batch_size: 4
   max_cores_per_task: 4
