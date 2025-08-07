@@ -1,0 +1,49 @@
+idx = 0 / 32
+idx = 1 / 32
+idx = 2 / 32
+idx = 3 / 32
+idx = 4 / 32
+idx = 5 / 32
+idx = 6 / 32
+idx = 7 / 32
+idx = 8 / 32
+idx = 9 / 32
+idx = 10 / 32
+idx = 11 / 32
+idx = 12 / 32
+idx = 13 / 32
+idx = 14 / 32
+idx = 15 / 32
+idx = 16 / 32
+idx = 17 / 32
+idx = 18 / 32
+idx = 19 / 32
+idx = 20 / 32
+idx = 21 / 32
+idx = 22 / 32
+idx = 23 / 32
+idx = 24 / 32
+idx = 25 / 32
+idx = 26 / 32
+idx = 27 / 32
+idx = 28 / 32
+idx = 29 / 32
+idx = 30 / 32
+idx = 31 / 32
+idx = 0 / 32
+idx = 16 / 32
+Traceback (most recent call last):
+  File "/home/twoller/AMST2/squirrel/run_prealignment_test.py", line 83, in <module>
+    run_prealignment()
+  File "/home/twoller/AMST2/squirrel/run_prealignment_test.py", line 54, in run_prealignment
+    dot_product_on_affines_workflow(
+  File "/home/twoller/AMST2/squirrel/squirrel/workflows/transformation.py", line 600, in dot_product_on_affines_workflow
+    out_transforms = transforms[0] * transforms[1]
+                     ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+  File "/home/twoller/AMST2/squirrel/squirrel/library/affine_matrices.py", line 225, in __mul__
+    stack=[self[idx] * other[idx] for idx in range(len(self))],
+                       ~~~~~^^^^^
+  File "/home/twoller/AMST2/squirrel/squirrel/library/affine_matrices.py", line 182, in __getitem__
+    return self._stack[item]
+           ~~~~~~~~~~~^^^^^^
+IndexError: list index out of range
