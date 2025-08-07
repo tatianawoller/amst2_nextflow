@@ -7,7 +7,7 @@
 
 ## Current state
 - :construction: prealignment crashes at the third step (transformation.dot_product_on_affines_workflow)
-- :construction: amst is only tested on the test data that was aligned with TM
+- :construction: amst is only tested on the test data that was aligned with TM, amst crashes either when creating a dummy transformation or at the step (apply_multi_step_stack_alignment_workflow ) because it does not find the file
 
 ## Test data
 - for alignment: 1st 32 slide of raw data at https://www.ebi.ac.uk/empiar/EMPIAR-10311/
