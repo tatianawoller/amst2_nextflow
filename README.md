@@ -2,8 +2,8 @@
 
 ## Plan
 - run prealign_amst2, amst, prealign_amst2 + amst_amst2 using a conda environment based on squirrel 
-- implement prealign_amst2, amst, prealign_amst2 as a nextflow subworkflow within a AMST2 nextflow module using conda
-- implement prealign_amst2, amst, prealign_amst2 as a nextflow subworkflow within a AMST2 nextflow module using docker/apptainer
+- implement 2 use cases: prealign + amst ( from amst2), amst  as 2 nextflow subworkflows within a AMST2 nextflow module using conda
+- test 2 use cases: prealign + amst ( from amst2), amst subworkflows within a AMST2 nextflow module using docker/apptainer
 
 ## Current state
 - :construction: prealignment crashes at the third step (transformation.dot_product_on_affines_workflow)
