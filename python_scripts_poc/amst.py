@@ -45,11 +45,11 @@ def run_amst():
     elastix_param_files = glob.glob("elastix_params_amst_dummy.txt")
     amst_workflow(
         pre_align_dirpath,
-        os.path.join(output_dirpath,'amst-transforms.json'),
+        os.path.join(output_dirpath,'amst-transforms'),
         raw_stack=None,
         pre_align_key='data',
         pre_align_pattern='*.tif',
-        transform=parameter_dict['amst']['transform'],
+        transform=[parameter_dict['amst']['transform']],
         auto_mask_off=parameter_dict['amst']['auto_mask_off'],
         median_radius=parameter_dict['amst']['median_radius'],
         z_smooth_method='median',
@@ -65,8 +65,8 @@ def run_amst():
 
 
     apply_multi_step_stack_alignment_workflow(
-            image_stack=input_dirpath,
-            transform_paths=os.path.join(output_dirpath, 'amst-transforms.json'),  # List of transform files
+            image_stack=pre_align_dirpath,
+            transform_paths=[os.path.join(output_dirpath, 'amst-transforms')],  # List of transform files
             out_filepath=os.path.join(output_dirpath, 'amst'),
             pattern='*.tif',
             auto_pad=True,      
