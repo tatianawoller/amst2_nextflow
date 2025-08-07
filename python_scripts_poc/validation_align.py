@@ -26,7 +26,7 @@ def main():
         resolution_yx=(1.0, 1.0),
         out_name=None,
         y_max=10,
-        method='elastix',
+        method=args.method,
     #    gaussian_sigma=1.0,
     #    subtract_average=False,
     #    verbose=False
