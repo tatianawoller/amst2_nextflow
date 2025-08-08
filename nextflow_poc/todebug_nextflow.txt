@@ -1,0 +1,30 @@
+ERROR ~ Error executing process > 'sbs_alignment'
+
+Caused by:
+  Process `sbs_alignment` terminated with an error exit status (1)
+
+Command executed:
+
+  elastix_stack_alignment.py  --input_yaml params-prealign.yaml --type_alignment sbs_alignment --out_json sbs_prealignment
+
+Command exit status:
+  1
+
+Command output:
+  (empty)
+
+Command error:
+  Traceback (most recent call last):
+    File "/lustre1/scratch/348/vsc34840/squirrel/squirrel/bin/elastix_stack_alignment.py", line 52, in <module>
+      run_stack_alignment()
+    File "/lustre1/scratch/348/vsc34840/squirrel/squirrel/bin/elastix_stack_alignment.py", line 44, in run_stack_alignment
+      z_step=parameter_dict[args.type_alignment]['z_step'], 
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  KeyError: 'z_step'
+
+Work dir:
+  /scratch/leuven/348/vsc34840/mcmicro/work/9f/d7c54d873c13630a4b2dcd0ed80e5e
+
+Tip: you can try to figure out what's wrong by changing to the process work dir and showing the script file named `.command.sh`
+
+ -- Check '.nextflow.log' file for details
