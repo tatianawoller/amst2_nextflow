@@ -16,7 +16,7 @@ general:
   max_cores_per_task: 4
 
 amst:
-  elastix_parameter_file: auto # after running amst_prealign elastix_parameter_file should be put to auto
+  elastix_parameter_file: /home/twoller/AMST2/results/nsbs-pre-align.txt # after running amst_prealign elastix_parameter_file should be put to auto
   transform: bspline
   median_radius: 7
   gaussian_sigma: 2.0
