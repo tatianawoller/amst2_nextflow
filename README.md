@@ -23,5 +23,5 @@ python  prealignment.py
 # for amst and so far I have added the amst.py in squirrel
 python  amst.py
 # to test the align validation
-python test_align.py --stack gt_amst/ --out_dirpath ../results/ --rois "4,536,1916,20,256,256" --method 'elastix'
+python test_align.py -stack ../../test_data_julian/20140801_hela-wt_xy5z8nm_as/mini_amst/ --out_dirpath ../../test_data_julian/20140801_hela-wt_xy5z8nm_as/  --method "elastix" --rois "0,1,2828,6616,20,256,256"'
 ```
