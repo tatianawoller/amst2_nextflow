@@ -6,9 +6,9 @@
 general:
   # These three can be omitted if AMST is run inside the same target folder as the pre-align >>>
   input_dirpath: /home/twoller/AMST2/input_data/test_data  # Defaults to <output_dirpath>/stack_to_ome_zarr/input-raw.ome.zarr
-  pre_align_dirpath: /home/twoller/AMST2/input_data/test_data_tm  # Defaults to <output_dirpath>/apply_pre_align/nsbs-pre-align.ome.zarr
+  pre_align_dirpath: /home/twoller/AMST2/input_data/prealigned-file  # Defaults to <output_dirpath>/apply_pre_align/nsbs-pre-align.ome.zarr
     #pre_align_transforms: /path/to/pre-alignment-transforms.json  # Defaults to <output_dirpath>/nsbs-pre-align.json
-  pre_align_transforms: False #/path/to/pre-alignment-transforms.json  # Defaults to <output_dirpath>/nsbs-pre-align.json
+  pre_align_transforms: /home/twoller/AMST2/results/nsbs-pre-align.json #/path/to/pre-alignment-transforms.json  # Defaults to <output_dirpath>/nsbs-pre-align.json
     # <<<run
   output_dirpath: /home/twoller/AMST2/results
   cores: 8
@@ -16,7 +16,7 @@ general:
   max_cores_per_task: 4
 
 amst:
-  elastix_parameter_file: None # after running amst_prealign elastix_parameter_file should be put to auto
+  elastix_parameter_file: auto # after running amst_prealign elastix_parameter_file should be put to auto
   transform: bspline
   median_radius: 7
   gaussian_sigma: 2.0
