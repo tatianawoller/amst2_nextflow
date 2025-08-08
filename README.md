@@ -6,7 +6,7 @@
 - test 2 use cases: prealign + amst ( from amst2), amst subworkflows within a AMST2 nextflow module using docker/apptainer
 
 ## Current state
-- :construction: prealignment crashes at the third step (elastix_stack_alignment_workflow) probably because apply_multi_step_stack_alignment_workflow does not save a tif or h5 file
+- prealignment works as a python script
 - :construction: amst is only tested on the test data that was aligned with TM,using a dummy transformation but (apply_multi_step_stack_alignment_workflow ) does not lead to any new file
 
 ## Test data
