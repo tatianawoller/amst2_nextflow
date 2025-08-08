@@ -1,0 +1,16 @@
+roi_idx = 0 / 6
+Traceback (most recent call last):
+  File "/lustre1/scratch/348/vsc34840/squirrel/squirrel/val.py", line 37, in <module>
+    main()
+  File "/lustre1/scratch/348/vsc34840/squirrel/squirrel/val.py", line 21, in main
+    stack_alignment_validation_workflow(
+  File "/lustre1/scratch/348/vsc34840/squirrel/squirrel/workflows/elastix.py", line 427, in stack_alignment_validation_workflow
+    result_matrix, _ = register_with_elastix(
+                       ^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre1/scratch/348/vsc34840/squirrel/squirrel/library/elastix.py", line 286, in register_with_elastix
+    bounds_fixed = get_bounds(fixed_image, return_ints=True)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre1/scratch/348/vsc34840/squirrel/squirrel/library/image.py", line 14, in get_bounds
+    return np.array([top_left[0], top_left[1], bottom_right[0] + 1, bottom_right[1] + 1]).astype(float).tolist()
+                                  ~~~~~~~~^^^
+IndexError: index 1 is out of bounds for axis 0 with size 1
