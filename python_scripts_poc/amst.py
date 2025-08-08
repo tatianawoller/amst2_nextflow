@@ -4,7 +4,7 @@
 Proof of concept to run prealign like in AMST2
 """
 
-#from squirrel.workflows.elastix import make_elastix_default_parameter_file_workflow
+from squirrel.workflows.elastix import make_elastix_default_parameter_file_workflow
 from squirrel.workflows.amst import amst_workflow
 import os
 from squirrel.workflows.elastix import apply_multi_step_stack_alignment_workflow
@@ -28,9 +28,9 @@ def run_amst():
 
     # FinalGridSpacingInPhysicalUnits:256 GridSpacingSchedule:4.0,3.0,2.0,1.0 MaximumStepLength:0.5 MaximumNumberOfIterations:1024
     # if  not parameter_dict['general']['pre_align_transforms'] and parameter_dict['amst']['elastix_parameter_file'] != 'auto':
-    #     make_elastix_default_parameter_file_workflow(
-    #         out_filepath=os.path.join(output_dirpath, "elastix-params-amst-gs256.txt"),
-    #         transform='affine',  # or 'rigid', 'affine', 'translation'
+    make_elastix_default_parameter_file_workflow(
+             out_filepath=os.path.join(output_dirpath, "elastix-params-amst-gs256.txt"),
+             transform='bspline')  # or 'rigid', 'affine', 'translation'
     #        # final_grid_spacing_in_physical_units=256,
     #     #    grid_spacing_schedule=[4.0,3.0,2.0,1.0],
     #        # maximum_number_of_iterations=1024,
@@ -55,8 +55,7 @@ def run_amst():
         z_smooth_method='median',
         z_range=None,
         gaussian_sigma=parameter_dict['amst']['gaussian_sigma'],
-        elastix_parameters=parameter_dict['amst']['elastix_parameter_file'],
-       # elastix_parameters=parameter_dict['amst']['elastix_parameter_file'], # what should be if running amst2 entirely
+        elastix_parameters=os.path.join(output_dirpath, "elastix-params-amst-gs256.txt"),
         crop_to_bounds_off=False,
         quiet=False,
         try_again=False,
