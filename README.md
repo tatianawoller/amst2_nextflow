@@ -6,7 +6,7 @@
 - test 2 use cases: prealign + amst ( from amst2), amst subworkflows within a AMST2 nextflow module using docker/apptainer
 
 ## Current state
-- prealignment works as a python script
+- prealignment works as a python script and a nextflow workflow
 - :construction: amst is only tested on the test data that was aligned with TM,using a dummy transformation but (apply_multi_step_stack_alignment_workflow ) does not lead to any new file
 
 ## Test data
