@@ -26,5 +26,8 @@ python  amst.py
 # when nextflow is available
 nextflow main.nf
 # to test the align validation
-python test_align.py -stack ../../test_data_julian/20140801_hela-wt_xy5z8nm_as/mini_amst/ --out_dirpath ../../test_data_julian/20140801_hela-wt_xy5z8nm_as/  --method "elastix" --rois "0,1,2828,6616,20,256,256"'
+# works when changing line 326 in elastix.py by if auto_mask is not None and auto_mask is not False:
+# check y_max
+stack_alignment_validation /home/twoller/AMST2/results/amst/amst /home/twoller/AMST2/results/amst/val "13,536,2050,32,256,256" --out_name test --y_max 10'
+# how to have multiple plots in one plot ?
 ```
