@@ -1,16 +1,20 @@
-roi_idx = 0 / 6
+stack_alignment_validation /home/twoller/AMST2/results/amst/amst /home/twoller/AMST2/results/amst/val "13,536,2050,32,256,256" --out_name test --y_max 10
+roi_idx = 0 / 0
 Traceback (most recent call last):
-  File "/lustre1/scratch/348/vsc34840/squirrel/squirrel/val.py", line 37, in <module>
-    main()
-  File "/lustre1/scratch/348/vsc34840/squirrel/squirrel/val.py", line 21, in main
+  File "/home/twoller/AMST2/.venv/bin/stack_alignment_validation", line 8, in <module>
+    sys.exit(stack_alignment_validation())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/twoller/AMST2/squirrel/squirrel/elastix_registration.py", line 405, in stack_alignment_validation
     stack_alignment_validation_workflow(
-  File "/lustre1/scratch/348/vsc34840/squirrel/squirrel/workflows/elastix.py", line 427, in stack_alignment_validation_workflow
-    result_matrix, _ = register_with_elastix(
-                       ^^^^^^^^^^^^^^^^^^^^^^
-  File "/lustre1/scratch/348/vsc34840/squirrel/squirrel/library/elastix.py", line 286, in register_with_elastix
-    bounds_fixed = get_bounds(fixed_image, return_ints=True)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/lustre1/scratch/348/vsc34840/squirrel/squirrel/library/image.py", line 14, in get_bounds
-    return np.array([top_left[0], top_left[1], bottom_right[0] + 1, bottom_right[1] + 1]).astype(float).tolist()
-                                  ~~~~~~~~^^^
-IndexError: index 1 is out of bounds for axis 0 with size 1
+  File "/home/twoller/AMST2/squirrel/squirrel/workflows/elastix.py", line 417, in stack_alignment_validation_workflow
+    roi_data = stack[roi]
+               ~~~~~^^^^^
+  File "/home/twoller/AMST2/squirrel/squirrel/library/io.py", line 248, in __getitem__
+    stack = [read_tif_slice(x, return_filepath=False) for x in filepaths]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/twoller/AMST2/squirrel/squirrel/library/io.py", line 65, in read_tif_slice
+    image = imread(filepath)
+            ^^^^^^^^^^^^^^^^
+  File "/home/twoller/AMST2/.venv/lib/python3.12/site-packages/tifffile/tifffile.py", line 1197, in imread
+    raise ValueError('no files found')
+ValueError: no files found
