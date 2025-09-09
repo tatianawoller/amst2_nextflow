@@ -1,6 +1,5 @@
 process APPLY_AMST {
-    label 'apply_amst'
-    conda '/home/tatiana/miniconda3/envs/squirrel-env'    
+    label 'apply_amst'   
     input:
     path(yaml_file)
     path(amst_transforms)
