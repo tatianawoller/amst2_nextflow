@@ -1,10 +1,12 @@
 # AMST2_nextflow
 
 ## Plan
-- run prealign_amst2, amst, prealign_amst2 + amst_amst2 using a conda environment based on squirrel ✔️
+- run prealign_amst2 using a conda environment or apptainer based on squirrel ✔️
+- run prealign_amst2 using  apptainer based on squirrel ✔️
+- implementation subworkflow ✔️
 - implement 2 use cases: prealign + amst ( from amst2), amst  as 2 nextflow subworkflows within a AMST2 nextflow module using conda 🚧
-- test 2 use cases: prealign + amst ( from amst2), amst subworkflows within a AMST2 nextflow module using docker/apptainer
-- test on hpc
+- test 2 use cases: prealign + amst ( from amst2), amst subworkflows within a AMST2 nextflow module using docker  🚧
+- test on hpc🚧
 
 ## Current state
 - prealignment works as a python script and a nextflow workflow
