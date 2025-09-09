@@ -1,6 +1,5 @@
 process ELASTIX_STACK_ALIGNMENT_NBS {
     label 'elastix_stack_alignment_nbs'
-    conda '/home/tatiana/miniconda3/envs/squirrel-env'
     
     input:
     val(done)
