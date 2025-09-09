@@ -1,6 +1,5 @@
 process APPLY_ELASTIX_PREALIGNMENT {
-    label 'apply_elastix_stack_prealignment'
-    conda '/home/tatiana/miniconda3/envs/squirrel-env'    
+    label 'apply_elastix_stack_prealignment'    
     input:
     path(yaml_file)
     val(sbs_json)
