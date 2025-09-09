@@ -1,6 +1,5 @@
 process APPLY_ELASTIX_ALIGNMENT {
     label 'apply_elastix_stack_alignment'
-    conda '/home/tatiana/miniconda3/envs/squirrel-env'    
     input:
     path(yaml_file)
     val(type_align)
