@@ -4,5 +4,5 @@
   ```bash
   module load Nextflow
   # run in local
-  nextflow run main.nf
+  nextflow run main.nf -profile conda/apptainer
   ```
