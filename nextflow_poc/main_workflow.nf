@@ -1,7 +1,7 @@
 #!/usr/bin/env nextflow
 include {AMST2} from './subworkflows/amst2.nf'
 include {PREPARE_DATA} from './modules/prepare.nf'  
-include {CAREAMICS} from './subworkflows/careamics.nf'
+//some denoising
 
 
 workflow {
@@ -13,17 +13,6 @@ workflow {
                 params.crop_size,
                 params.max_zero_fraction,
                 params.outdir)
-    CAREAMICS(AMST2.out.amst_files,
-                PREPARE_DATA.out.csv,
-                params.model,
-                params.exp_name,
-                params.batch_size,
-                params.patch_size,
-                params.num_epochs,
-                params.axes,
-                params.file_extension,
-                params.tile_size,
-                params.tile_overlap,
-                params.test_axis)
+    //some denoising
 
 }
