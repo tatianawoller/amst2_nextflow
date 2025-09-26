@@ -32,4 +32,6 @@ nextflow main.nf
 # check y_max
 stack_alignment_validation /home/twoller/AMST2/results/amst/amst /home/twoller/AMST2/results/amst/val "13,536,2050,32,256,256" --out_name test --y_max 10'
 # how to have multiple plots in one plot ?
+# how to run in a workflow
+nextflow run main_workflow -c nextflow_EM.config
 ```
