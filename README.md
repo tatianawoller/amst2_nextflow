@@ -26,7 +26,7 @@ python  prealignment.py
 # for amst and so far I have added the amst.py in squirrel
 python  amst.py
 # when nextflow is available
-nextflow main.nf
+nextflow main_subworkflow.nf -profile conda 
 # to test the align validation
 # works when changing line 326 in elastix.py by if auto_mask is not None and auto_mask is not False:
 # check y_max
