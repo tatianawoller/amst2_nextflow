@@ -1,19 +1,23 @@
-include {AMST as amst} from './../modules/local/run_amst.nf'
-include {APPLY_AMST as apply_amst} from './../modules/local/apply_amst.nf'
+include {ELASTIX_APPLY_MULTI_STACK_ALIGNMENT as apply_amst_alignment }  from './../modules/local/sq_apply_multi_stack_alignment.nf'
+include {SQ_GENERATE_ELASTIX as generate_elastix_params} from './../modules/local/sq_generate_elastix_params.nf'
+include {SQ_AMST as amst} from './../modules/local/sq_amst.nf'
 
-workflow AMST_WORKFLOW {
+workflow AMST2_AMST {
     take:
-        done_signal
-        yaml_amst
+        default_elastix
+        transform_amst
+        elx
+        out_prealigned
+        out_amst
+        folder_amst
 
     main: 
-        amst(done_signal,params.yaml_amst)
-        apply_amst(yaml_amst, amst.out.transform_json)
+        generate_elastix_params(default_elastix, transform_amst, elx)
+        amst(out_prealigned,out_amst,generate_elastix_params.out.elastix_default_params)
+        apply_amst_alignment(out_prealigned, amst.out.json_transform,folder_amst)
     
         
     emit: 
-        apply_amst.out.amst_tiffs
-        apply_amst.out.done
-
+        apply_amst_alignment.out.sbs_align
 
 }
