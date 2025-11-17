@@ -5,6 +5,7 @@ include {SQ_AMST as amst} from './../modules/local/sq_amst.nf'
 workflow AMST2_AMST {
     take:
         default_elastix
+        transform_default
         transform_amst
         elx
         out_prealigned
@@ -12,7 +13,7 @@ workflow AMST2_AMST {
         folder_amst
 
     main: 
-        generate_elastix_params(default_elastix, transform_amst, elx)
+        generate_elastix_params(default_elastix, transform_default, elx)
         amst(out_prealigned,out_amst,generate_elastix_params.out.elastix_default_params)
         apply_amst_alignment(out_prealigned, amst.out.json_transform,folder_amst)
     
