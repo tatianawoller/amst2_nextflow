@@ -1,5 +1,6 @@
 process LINALG_OP{
-    label 'lin_alg_op'
+    label 'process_low'
+    container '/scratch/348/vsc34840/containers/squirrel_nextflow.sif'  
     input:
     path(input_json0)
     path(input_json1)

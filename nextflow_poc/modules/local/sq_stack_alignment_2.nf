@@ -1,5 +1,6 @@
 process ELASTIX_STACK_ALIGNMENT_2 {
-    label 'elastix_stack_alignment_2'  
+    label 'process_high' 
+    container '/scratch/348/vsc34840/containers/squirrel_nextflow.sif'   
     input:
     path(input)
     val(json_name)

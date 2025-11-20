@@ -1,5 +1,6 @@
 process SQ_AMST {
-    label 'sq_amst'  
+    label 'process_high'
+    container '/scratch/348/vsc34840/containers/squirrel_nextflow.sif'  
     input:
     path(input_folder)
     val(json_name)

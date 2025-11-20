@@ -1,5 +1,6 @@
 process ELASTIX_APPLY_MULTI_STACK_ALIGNMENT {
-    label 'elastix_apply_multi_stack_alignment'  
+    label 'process_medium'
+    container '/scratch/348/vsc34840/containers/squirrel_nextflow.sif'    
     input:
     path(input)
     val(json_name)

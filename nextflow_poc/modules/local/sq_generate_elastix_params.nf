@@ -1,5 +1,6 @@
 process SQ_GENERATE_ELASTIX {
-    label 'sq_generate_elastix_params'  
+    label 'process_single'  
+    container '/scratch/348/vsc34840/containers/squirrel_nextflow.sif'  
     input:
     val(filename_elastix)
     val(transform)
