@@ -1,0 +1,115 @@
+nextflow_process {
+
+    name "Test Process matrices operations"
+    script "../sq_apply_multi_stack_alignment.nf"
+    process "ELASTIX_APPLY_MULTI_STACK_ALIGNMENT"
+    tag "modules"
+    tag "modules_local"
+    tag "prealignment_amst"
+    tag "apply_multi_alignment"
+
+    test("apply_alignment_sbs") {
+
+        when {
+            params {
+               module_args= "--auto_pad "
+            }
+            process {
+                config "/home/tatiana/nextflow_bic/amst2_nextflow/modules/local/apply_multi_stack_alignment/tests/nextflow.config"
+                """
+                input[0] ="/home/tatiana/test_amst2/input"                    
+                input[1]=file("/home/tatiana/test_amst2/json_files/sbs.json")
+                input[2]="sbs_align"
+                """
+            }
+        }
+
+       then {
+          assertAll(
+               { assert process.success },
+                { assert process.out.sbs_align.size() >= 1},
+                { assert path(process.out.sbs_align[0]).exists() },
+                {assert snapshot(process.out.sbs_align[0]).match("apply_alignment_sbs")}
+            )
+        }
+    }
+
+ //   test("apply_alignment_nsbs") {
+
+  //      when {
+  //          params {
+  //             module_args= "--auto_pad "
+  //          }
+ //           process {
+ //               config "/home/tatiana/nextflow_bic/amst2_nextflow/modules/local/apply_multi_stack_alignment/tests/nextflow.config"
+ //               """
+ //               input[0] =file("/home/tatiana/test_amst2/sbs_alignment")                    
+ //               input[1] =file("/home/tatiana/test_amst2/json_files/nsbs.json")
+ //               input[2] ="nsbs_align"
+ //               """
+ //           }
+ //       }
+
+ //       then {
+ //           assertAll(
+ //               { assert process.success },
+ //               { assert process.out.sbs_align.size() >= 1},
+ //               { assert path(process.out.sbs_align[0]).exists() },
+ //               {assert snapshot(process.out.sbs_align[0]).match("apply_alignment_nsbs")}
+ //           )
+ //       }
+ //   }
+    
+
+       test("apply_alignment_amst") {
+
+        when {
+            params {
+               module_args= "--auto_pad "
+            }
+            process {
+                config "/home/tatiana/nextflow_bic/amst2_nextflow/modules/local/apply_multi_stack_alignment/tests/nextflow.config"
+                """
+                input[0] ="/home/tatiana/test_amst2/nsbs_align"                    
+                input[1]="/home/tatiana/test_amst2/json_files/transforms.json"
+                input[2]="amst"
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert process.out.sbs_align.size() >= 1 },
+                { assert path(process.out.sbs_align[0]).exists() },
+                {assert snapshot(process.out.sbs_align[0]).match("apply_alignment_amst")}
+            )
+        }
+    }
+
+    test("stub") {
+
+        options "-stub"
+
+        when {
+            params {
+               module_args= "--auto_pad "
+            }
+            process {
+                config "/home/tatiana/nextflow_bic/amst2_nextflow/modules/local/stack_alignment/tests/nextflow.config"
+                """
+                input[0] =  "/home/tatiana/input_amst/input"                    
+                input[1]="/home/tatiana/test_amst2/json_files/sbs.json"
+                input[2]="sbs_align"
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match()}
+            )
+        }
+    }
+}

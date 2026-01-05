@@ -1,0 +1,66 @@
+{
+    "amst": {
+        "content": [
+            [
+                "transform_00000.txt:md5,61eceba14cac2818c7364805aafe1836",
+                "transform_00001.txt:md5,2d16c402340582b8e47ffce321e6bf6d",
+                "transform_00002.txt:md5,c8e96e24dda1b91119cbece894604390",
+                "transform_00003.txt:md5,52b254f924a868deab7a0fa6722d4d2f",
+                "transform_00004.txt:md5,81aa93a8142e1fbaa8e76b4afc1aa313",
+                "transform_00005.txt:md5,e0d2879fee23d54473a1c2a53eb8e421",
+                "transform_00006.txt:md5,c7b21a5bc89a6b5f38ad44a6a57b6dfa",
+                "transform_00007.txt:md5,6830782da43bdc3cf0b2c8db5a18097c",
+                "transform_00008.txt:md5,2729692570143afcfe0411c3dcb10196",
+                "transform_00009.txt:md5,253965f96acce2805f5f11bc26a570d1",
+                "transform_00010.txt:md5,28fd62d8800c1d378a29b4607eab1b74",
+                "transform_00011.txt:md5,c5f78b258dabc3f91439fe347e6e2b5e",
+                "transform_00012.txt:md5,1288ab514abe8699dc8efbf5bbcaf8a1",
+                "transform_00013.txt:md5,83872efd43a283dd1c098f3e87ca0b4e",
+                "transform_00014.txt:md5,195d905b045d74a68a84286541cb2cfe",
+                "transform_00015.txt:md5,97fa3e2466aa1e857a3bd5b42356d12c",
+                "transform_00016.txt:md5,131921ae9a22abc8e2930b5a466152f1",
+                "transform_00017.txt:md5,20cf9e304d1ef4ca529e0aa6d3e51bfb",
+                "transform_00018.txt:md5,1b7a2bc7109355a7b9474475990bfac0",
+                "transform_00019.txt:md5,024a8907e2e2402338c9e907ed14bb86",
+                "transform_00020.txt:md5,e9da9f851d05be9b274ba18250c81655",
+                "transform_00021.txt:md5,5c0d7638d3496bdb5764878534e56290",
+                "transform_00022.txt:md5,a43ec01c2648c148c9f1a3f6d0aa8859",
+                "transform_00023.txt:md5,ee20a160383044d0db4004d90b20f0f2",
+                "transform_00024.txt:md5,5a7672199935321199f904ff5718a073",
+                "transform_00025.txt:md5,3728a4fae9f033046f11f00992a8c25f",
+                "transform_00026.txt:md5,f5a2a45110a7b798f43dcbcfc7c78bf8",
+                "transform_00027.txt:md5,098721d2fcebbbe495dfbea738dcc636",
+                "transform_00028.txt:md5,e61251ecfdb6c742d3bff5315f903c00",
+                "transform_00029.txt:md5,2e4d7e2cc1786a406fc8ccffbc6ad49f",
+                "transform_00030.txt:md5,7b06d126e38504826d8986caf6355920",
+                "transform_00031.txt:md5,d0aabe526e09bc2ef0621df97bae427a"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.04.6"
+        },
+        "timestamp": "2026-01-05T17:14:26.065379796"
+    },
+    "stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        
+                    ]
+                ],
+                "json_transform": [
+                    [
+                        
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.04.6"
+        },
+        "timestamp": "2026-01-05T17:14:35.803295955"
+    }
+}

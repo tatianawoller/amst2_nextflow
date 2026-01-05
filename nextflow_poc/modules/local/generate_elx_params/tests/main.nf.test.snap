@@ -1,0 +1,29 @@
+{
+    "generate_elastix_params": {
+        "content": [
+            "elastix-params-amst-gs256.txt:md5,c2899a3cc09523b98fecfb49babf7935"
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.04.6"
+        },
+        "timestamp": "2026-01-05T14:50:18.538719425"
+    },
+    "stub": {
+        "content": [
+            {
+                "0": [
+                    "elastix-params-amst-gs256.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                ],
+                "elastix_default_params": [
+                    "elastix-params-amst-gs256.txt:md5,d41d8cd98f00b204e9800998ecf8427e"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.04.6"
+        },
+        "timestamp": "2026-01-05T14:50:24.876624167"
+    }
+}

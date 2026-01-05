@@ -1,0 +1,61 @@
+nextflow_process {
+
+    name "Test Process matrices operations"
+    script "../sq_amst.nf"
+    process "SQ_AMST"
+    tag "modules"
+    tag "modules_local"
+    tag "amst"
+    tag "amst"
+
+    test("amst") {
+
+        when {
+            params {
+               module_args= "--gaussian_sigma 2.0 --transform bspline --median_radius 7"
+            }
+            process {
+                config "/home/tatiana/nextflow_bic/amst2_nextflow/modules/local/amst/tests/nextflow.config"
+                """
+                input[0] ="/home/tatiana/test_amst2/nsbs_align"                    
+                input[1]="transform_json"
+                input[2]=file("/home/tatiana/test_amst2/json_files/elastix-params-amst-gs256.txt")
+                """
+            }
+        }
+
+       then {
+          assertAll(
+               { assert process.success },
+                { assert path(process.out.json_transform[0]).exists() },
+                {assert snapshot(process.out.json_transform[0]).match("amst")}
+            )
+        }
+    }
+
+    test("stub") {
+
+        options "-stub"
+
+        when {
+            params {
+                module_args= "--gaussian_sigma 2.0 --transform bspline --median_radius 7"
+            }
+            process {
+                config "/home/tatiana/nextflow_bic/amst2_nextflow/modules/local/stack_alignment/tests/nextflow.config"
+                """
+                input[0] ="/home/tatiana/test_amst2/nsbs_align"                    
+                input[1]="transform_json"
+                input[2]=file("/home/tatiana/test_amst2/json_files/elastix-params-amst-gs256.txt")
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match()}
+            )
+        }
+    }
+}

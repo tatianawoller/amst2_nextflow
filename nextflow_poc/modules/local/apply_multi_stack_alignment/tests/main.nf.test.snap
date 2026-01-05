@@ -1,0 +1,171 @@
+{
+    "apply_alignment_amst": {
+        "content": [
+            [
+                "slice_0000.tif:md5,fa541c820228e340a3ba7ceb296e39a2",
+                "slice_0001.tif:md5,78e8b135dc172a301c5fbe0275060eb4",
+                "slice_0002.tif:md5,cba2553b7f9d02d3271e184c0582bccb",
+                "slice_0003.tif:md5,f51db8a6362bbc55b4e9472883ec1eef",
+                "slice_0004.tif:md5,3bb34a34bf6f4286fb2afab877e69f8c",
+                "slice_0005.tif:md5,6583f6cff7f3bfb743f169a131655f5b",
+                "slice_0006.tif:md5,ef3f365eecf64dd39fd2118b0d963509",
+                "slice_0007.tif:md5,502124d678c8d4f65d95346efe96f264",
+                "slice_0008.tif:md5,0ce77adf6216aa87760646ab5d0e4574",
+                "slice_0009.tif:md5,0bb72f7f32ff1cc00b2db9b4f3d4d826",
+                "slice_0010.tif:md5,2544061145755844c1211fb014cc1882",
+                "slice_0011.tif:md5,c74f3b3dcaa15c726a3e8c7e9ffc82da",
+                "slice_0012.tif:md5,594f9fa5567d0c0fb5ac5225055cced1",
+                "slice_0013.tif:md5,002ad8608248ed4c00effa42192ab9a1",
+                "slice_0014.tif:md5,10892ab5b59578628dff7967799ff798",
+                "slice_0015.tif:md5,9652a696581a6304ad6dab1d3fcec3fd",
+                "slice_0016.tif:md5,d4c08c5f8db5e4c2e719abc4d3430fe4",
+                "slice_0017.tif:md5,93b7e3525e0bdca18672ed63d9889d22",
+                "slice_0018.tif:md5,36bec14915c35081624e2dba573f4ce2",
+                "slice_0019.tif:md5,166c2275cb396989c5ee6872ae02c9d5",
+                "slice_0020.tif:md5,22093bfd9f529b96952aa9fac7c5dae3",
+                "slice_0021.tif:md5,bfa973dc93bb790015c05a0acab6fb37",
+                "slice_0022.tif:md5,a9adc4a472bbfbd201fa7c434dddd212",
+                "slice_0023.tif:md5,ae16d838d15d2cac8e48f7424af8085e",
+                "slice_0024.tif:md5,8b02839602e0f3ce3c00bbb805fc0aec",
+                "slice_0025.tif:md5,07c78496b41b79d2cca16f90dd359ee2",
+                "slice_0026.tif:md5,736671b2294c01e42ee4a8fc8f17dc6a",
+                "slice_0027.tif:md5,5c17239e19e4c4a163cfc8cacd6c53dd",
+                "slice_0028.tif:md5,dad3cfb3304ffb6333cbd365615e7987",
+                "slice_0029.tif:md5,23fc410e6cac0d8f756cd6e7a4e4a0d5",
+                "slice_0030.tif:md5,366e1d5b6a880c6abb28dac6a0f4f9e5",
+                "slice_0031.tif:md5,3164495acd1e83c412780f5eb4f50877"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.04.6"
+        },
+        "timestamp": "2026-01-05T12:06:00.069071197"
+    },
+    "apply_alignment_sbs": {
+        "content": [
+            [
+                "slice_0000.tif:md5,733360b5841621d6313a15b9eb4e9cc1",
+                "slice_0001.tif:md5,6e609820d3f32731d1336b7a34d6c10c",
+                "slice_0002.tif:md5,0f28f6c7e5533fa9ba3bc110c4dcc5ae",
+                "slice_0003.tif:md5,e8061647cc3d71570aba5c90e506d547",
+                "slice_0004.tif:md5,3cca83a431de9af2eb35219bb84ef9d1",
+                "slice_0005.tif:md5,b7fd13c798259d44f9791fc28a51ab0a",
+                "slice_0006.tif:md5,284a5a697bf7171b026170ee19b8ec10",
+                "slice_0007.tif:md5,c102341b7960fbfc06809fdc2c7df9c1",
+                "slice_0008.tif:md5,b904b7777c16b6a3c9e53a41699eafc3",
+                "slice_0009.tif:md5,55eefaac25509106efb547f8b0c1f0cd",
+                "slice_0010.tif:md5,6d4f625c41a27f48d14288e7c0f0eb5d",
+                "slice_0011.tif:md5,a85efdcc2da91623a3f53b8099bdb2ac",
+                "slice_0012.tif:md5,52d5403d9ca9081a4cf8f8e2e898c477",
+                "slice_0013.tif:md5,1704d8e6881b7739df05d96e825a4208",
+                "slice_0014.tif:md5,fe74c97ce3fa7bea762dad28d0ea78c7",
+                "slice_0015.tif:md5,052e2b7e4a9e90a8ee7c872bb8b241f4",
+                "slice_0016.tif:md5,ce858a8c56272920c9691d6d6fe494ce",
+                "slice_0017.tif:md5,5d9f93c9bb1e11c0ccb23b71f3db42d5",
+                "slice_0018.tif:md5,f21157db029b66cb530316374b5e343a",
+                "slice_0019.tif:md5,8217032761ba6472db45222850ca14a7",
+                "slice_0020.tif:md5,25feae6d88d4d25e85efc2d74ac726bf",
+                "slice_0021.tif:md5,0c722699a922bc9e37987f2096c30bcf",
+                "slice_0022.tif:md5,505d9cfff24a5f064f89cf158c4a0d1d",
+                "slice_0023.tif:md5,debc7d41304937f930180ad6673b7f7f",
+                "slice_0024.tif:md5,bc100f8f38b7959c1d906f679ed8642d",
+                "slice_0025.tif:md5,c6a83a79f0b28d7d99c4edb1f4518be8",
+                "slice_0026.tif:md5,8596daadae10e5f9ed7727214982e534",
+                "slice_0027.tif:md5,34afd3598bdc4b021949dfd2f464b7c3",
+                "slice_0028.tif:md5,88e33a9276739b2fa7a827828b295ac2",
+                "slice_0029.tif:md5,308c383ab85f703392ecebf1ff216c59",
+                "slice_0030.tif:md5,fd5c8b28c89da72d687e246fbed183da",
+                "slice_0031.tif:md5,7f573b11340c867335789ecfa1639e51"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.04.6"
+        },
+        "timestamp": "2026-01-05T12:04:16.968187824"
+    },
+    "stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        "slice_0000.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0001.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0002.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0003.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0004.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0005.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0006.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0007.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0008.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0009.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0010.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0011.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0012.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0013.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0014.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0015.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0016.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0017.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0018.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0019.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0020.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0021.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0022.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0023.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0024.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0025.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0026.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0027.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0028.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0029.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0030.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0031.tif:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "sbs_align": [
+                    [
+                        "slice_0000.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0001.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0002.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0003.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0004.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0005.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0006.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0007.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0008.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0009.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0010.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0011.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0012.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0013.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0014.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0015.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0016.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0017.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0018.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0019.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0020.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0021.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0022.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0023.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0024.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0025.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0026.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0027.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0028.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0029.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0030.tif:md5,d41d8cd98f00b204e9800998ecf8427e",
+                        "slice_0031.tif:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.04.6"
+        },
+        "timestamp": "2026-01-05T12:06:12.317480655"
+    }
+}

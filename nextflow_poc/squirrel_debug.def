@@ -1,56 +1,25 @@
 Bootstrap: docker
-From: ubuntu:24.04
+From: continuumio/miniconda3
 
-%arguments
-
-%environment
-    export PATH="/opt/conda/envs/squirrel-env/bin:/opt/conda/bin:$PATH"
-    export CONDA_DEFAULT_ENV="squirrel-env"
-    export CONDA_PREFIX="/opt/conda/envs/squirrel-env"
-
-%post
-    echo "--- Updating and upgrading Ubuntu ---"
-    apt-get update && apt-get upgrade -y
-
-    echo "--- Installing essential packages ---"
-    apt-get install -y wget git curl
-
-    echo "--- Downloading the Miniforge3 installer ---"
-    wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
-
-    echo "--- Installing Miniforge3 ---"
-    bash Miniforge3-Linux-x86_64.sh -b -p /opt/conda
-
-    echo "--- Removing the installer ---"
-    rm Miniforge3-Linux-x86_64.sh
-
-    echo "--- Setting up conda ---"
-    export PATH="/opt/conda/bin:$PATH"
-    
-    echo "--- Creating squirrel environment ---"
-    /opt/conda/bin/conda create -n squirrel-env python=3.11 -y
-    
-    echo "--- Activating environment and installing packages ---"
-    export PATH="/opt/conda/envs/squirrel-env/bin:$PATH"
-    
-    # Install conda packages first
-    /opt/conda/bin/conda install -n squirrel-env -c conda-forge opencv vigra pandas numpy=1.26.4 -y
-    
-    # Install pip packages
-    /opt/conda/envs/squirrel-env/bin/pip install --upgrade pip
-    
-    echo "--- Cloning and installing squirrel ---"
-    git clone https://github.com/jhennies/squirrel /squirrel
-    cd /squirrel
-    /opt/conda/envs/squirrel-env/bin/pip install -e .
-    /opt/conda/envs/squirrel-env/bin/pip install transform3d SimpleITK-SimpleElastix pyaml
-
-    echo "--- Cleaning up ---"
-    /opt/conda/bin/conda clean --all -y
-    apt-get clean
-    rm -rf /var/lib/apt/lists/*
-    rm -rf /squirrel/.git
+%files
 
 %runscript
-    #!/bin/bash
-    exec "$@"
+exec "$@"
+
+%environment
+CONDA_BIN_PATH="/opt/conda/bin"    
+export PATH="$CONDA_BIN_PATH:$PATH"
+export PATH="/opt/conda/envs/squirrelenv/bin:$PATH"
+
+%post   
+apt-get update -y   
+apt install -y build-essential
+export PATH="/opt/conda/bin:$PATH"      
+conda create --name squirrelenv python==3.11 -c conda-forge
+pip install --upgrade pip
+git clone https://github.com/jhennies/squirrel /squirrel
+cd /squirrel
+/opt/conda/envs/squirrelenv/bin/pip install -e .
+/opt/conda/envs/squirrelenv/bin/pip install  'numpy<2.0' transform3d SimpleITK-SimpleElastix pyaml
+conda install opencv vigra pandas -c conda-forge    
+

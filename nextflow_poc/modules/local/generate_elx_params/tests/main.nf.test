@@ -1,0 +1,58 @@
+nextflow_process {
+
+    name "Test generate elastix paramaters"
+    script "../sq_generate_elastix_params.nf"
+    process "SQ_GENERATE_ELASTIX"
+    tag "modules"
+    tag "modules_local"
+    tag "amst"
+    tag "sq_generate_elastix_params"
+
+    test("generate_elastix_params") {
+
+        when {
+
+            process {
+                config "/home/tatiana/nextflow_bic/amst2_nextflow/modules/local/generate_elx_params/tests/nextflow.config"
+                """
+                input[0] ="elastix-params-amst-gs256.txt"                    
+                input[1]="bspline"
+                input[2]="FinalGridSpacingInPhysicalUnits:128 GridSpacingSchedule:2.0,1.4,1.2,1.0"
+                """
+            }
+        }
+
+       then {
+          assertAll(
+               { assert process.success },
+                { assert process.out.elastix_default_params.size() >= 1},
+                { assert path(process.out.elastix_default_params[0]).exists() },
+                {assert snapshot(process.out.elastix_default_params[0]).match("generate_elastix_params")}
+            )
+        }
+    }
+
+    test("stub") {
+
+        options "-stub"
+
+        when {
+                process {
+                config "/home/tatiana/nextflow_bic/amst2_nextflow/modules/local/generate_elx_params/tests/nextflow.config"
+                """
+                input[0] ="elastix-params-amst-gs256.txt"                    
+                input[1]="bspline"
+                input[2]="FinalGridSpacingInPhysicalUnits:128 GridSpacingSchedule:2.0,1.4,1.2,1.0"
+                """
+            }
+            
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match()}
+            )
+        }
+    }
+}
