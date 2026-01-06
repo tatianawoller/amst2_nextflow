@@ -12,12 +12,23 @@ include {SQ_AMST as amst} from './modules/local/amst/sq_amst.nf'
 
 
 workflow {
-    sbs_alignment(params.input, params.out_json0, params.z_step0)
-    apply_sbs_alignment(params.input, sbs_alignment.out.json_transform,params.folder_sbs)
-    nsbs_alignment(apply_sbs_alignment.out.sbs_align,params.out_json1, params.z_step1)
-    lin_alg_op(sbs_alignment.out.json_transform, nsbs_alignment.out.json_transform, params.json4)
-    apply_nsbs_alignment(params.input, lin_alg_op.out.json_transform,params.folder_nsbs)
-    generate_elastix_params(params.default_elastix, params.transform_amst, params.elx)
-    amst(apply_nsbs_alignment.out.sbs_align,params.out_amst,generate_elastix_params.out.elastix_default_params)
-    apply_amst_alignment(apply_nsbs_alignment.out.sbs_align, amst.out.json_transform,params.folder_amst)
+     input_dir = file(params.input)
+     def file_count = input_dir.list().size()
+     def batch_size = 8
+    
+     ranges_ch = channel.of(0..<file_count)
+        .collate(batch_size)
+        .map { batch -> 
+            def start = batch[0] + 1
+            def end = batch[-1] + 1
+            tuple(start, end)
+        }
+     sbs_alignment(input_dir,ranges_ch)
+//    apply_sbs_alignment(params.input, sbs_alignment.out.json_transform,params.folder_sbs)
+//    nsbs_alignment(apply_sbs_alignment.out.sbs_align,params.out_json1, params.z_step1)
+//    lin_alg_op(sbs_alignment.out.json_transform, nsbs_alignment.out.json_transform, params.json4)
+//    apply_nsbs_alignment(params.input, lin_alg_op.out.json_transform,params.folder_nsbs)
+//    generate_elastix_params(params.default_elastix, params.transform_amst, params.elx)
+//    amst(apply_nsbs_alignment.out.sbs_align,params.out_amst,generate_elastix_params.out.elastix_default_params)
+//    apply_amst_alignment(apply_nsbs_alignment.out.sbs_align, amst.out.json_transform,params.folder_amst)
 }
