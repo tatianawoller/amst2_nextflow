@@ -8,7 +8,8 @@ include {ELASTIX_STACK_ALIGNMENT_2 as nsbs_alignment} from './modules/local/stac
 include{LINALG_OP as lin_alg_op} from './modules/local/matrices_op/sq_matrices_op.nf'
 include {SQ_GENERATE_ELASTIX as generate_elastix_params} from './modules/local/generate_elx_params/sq_generate_elastix_params.nf'
 include {SQ_AMST as amst} from './modules/local/amst/sq_amst.nf'
-include {MERGE_JSON as merge_json_sbs; MERGE_JSON as merge_json_nsbs; MERGE_JSON as merge_json_amst } from './modules/local/merge_json/main.nf'
+include {MERGE_JSON as merge_json_sbs; MERGE_JSON as merge_json_nsbs} from './modules/local/merge_json/main.nf'
+include {MERGE_AMST as merge_amst} from './modules/local/merge_amst/main.nf'
 
 
 
@@ -20,8 +21,8 @@ workflow {
      ranges_ch = channel.of(0..<file_count)
         .collate(batch_size)
         .map { batch -> 
-            def start = batch[0] + 1
-            def end = batch[-1] + 2
+            def start = batch[0] 
+            def end = batch[-1] + 1
             tuple(start, end)
         }
      sbs_alignment(input_dir,ranges_ch)
@@ -33,7 +34,6 @@ workflow {
      apply_nsbs_alignment(params.input, lin_alg_op.out.json_transform,params.folder_nsbs,ranges_ch)
      generate_elastix_params(params.default_elastix, params.transform_amst, params.elx)
      amst(apply_nsbs_alignment.out.tif_files.collect(),params.out_amst,generate_elastix_params.out.elastix_default_params,ranges_ch)
-     // from here on it fails
-     merge_json_amst(amst.out.json_transform.collect(),'amst_json')
-     apply_amst_alignment(apply_nsbs_alignment.out.tif_files.collect(), merge_json_amst.out.json_merge,params.folder_amst,ranges_ch)
+     merge_amst(amst.out.transform.collect(),'amst_json')
+     apply_amst_alignment(apply_nsbs_alignment.out.tif_files.collect(), merge_amst.out.json_merge,params.folder_amst,ranges_ch)
 }
