@@ -15,8 +15,8 @@ process MERGE_AMST {
     import os
     from squirrel.library.elastix import load_transform_stack_from_multiple_files
     output_directory = "${out_dir}"
-    input=$file_list
-    transforms = load_transform_stack_from_multiple_files(${file_list}.split(","))
+    trans_list=sorted(${file_list}.split(","), key=lambda x: int(x.split('_')[1]))
+    transforms = load_transform_stack_from_multiple_files(trans_list)
     transforms.to_file("${out_dir}")
     """
     stub:

@@ -16,6 +16,7 @@ process MERGE_JSON {
     from squirrel.library.affine_matrices import load_affine_stack_from_multiple_files
     trans=$file_list
     trans_list=trans.split(',')
+    trans_list=sorted(trans_list, key=lambda x: int(x.split('_')[1]))
     cwd=os.getcwd()
     transform_filepaths=[ os.path.join(cwd,i) for i in trans_list]
     transforms = load_affine_stack_from_multiple_files(transform_filepaths, sequence_stack=False)
