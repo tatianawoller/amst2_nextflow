@@ -9,12 +9,12 @@ process ELASTIX_APPLY_MULTI_STACK_ALIGNMENT {
  
 
     output:
-    path("${align_folder}${start}_${end}"), emit: tif_files
+    path("${align_folder}/*.tif"), emit: tif_files
 
     script:
     def args = task.ext.args ?: ''
     """
-    mkdir -p ${align_folder}${start}_${end}
+    mkdir -p ${align_folder}
     if [ -d "${input}" ]; then
        mkdir -p data_folder
        cp -r ${input}/* data_folder/
@@ -23,7 +23,7 @@ process ELASTIX_APPLY_MULTI_STACK_ALIGNMENT {
        cp ${input} data_folder/
 
     fi
-    sq-elastix-apply_multi_step_stack_alignment   data_folder $json_name ${align_folder}${start}_${end} --n_workers ${task.cpus} --z_range ${start} ${end} $args
+    sq-elastix-apply_multi_step_stack_alignment   data_folder $json_name $align_folder --n_workers ${task.cpus} --z_range ${start} ${end} $args
 
     """
     stub:
