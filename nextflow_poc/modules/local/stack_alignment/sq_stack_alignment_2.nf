@@ -9,9 +9,7 @@ process ELASTIX_STACK_ALIGNMENT_2 {
     script:
     def args = task.ext.args ?: ''
     """
-    mkdir -p tif_folder
-    cp ${input_dir} tif_folder/
-    sq-elastix-stack_alignment tif_folder nsbs_${start}_${end}.json \
+    sq-elastix-stack_alignment ${input_dir} nsbs_${start}_${end}.json \
         --z_range ${start} ${end} \
         --n_workers ${task.cpus} \
         $args

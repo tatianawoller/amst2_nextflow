@@ -10,6 +10,7 @@ include {SQ_GENERATE_ELASTIX as generate_elastix_params} from './modules/local/g
 include {SQ_AMST as amst} from './modules/local/amst/sq_amst.nf'
 include {MERGE_JSON as merge_json_sbs; MERGE_JSON as merge_json_nsbs} from './modules/local/merge_json/main.nf'
 include {MERGE_AMST as merge_amst} from './modules/local/merge_amst/main.nf'
+include {MERGE_FOLDER as merge_folder;MERGE_FOLDER as merge_folder_prealign; MERGE_FOLDER as merge_folder_amst } from './modules/local/merge_folder/main.nf'
 
 
 
@@ -28,12 +29,15 @@ workflow {
      sbs_alignment(input_dir,ranges_ch)
      merge_json_sbs(sbs_alignment.out.json_transform.collect(),'sbs.json')
      apply_sbs_alignment(params.input, merge_json_sbs.out.json_merge,params.folder_sbs,ranges_ch)
-     nsbs_alignment(apply_sbs_alignment.out.tif_files.collect(),ranges_ch)
+     merge_folder(apply_sbs_alignment.out.tif_files.collect(),'sbs_align')
+     nsbs_alignment(merge_folder.out.full_out,ranges_ch)
      merge_json_nsbs(nsbs_alignment.out.json_transform.collect(),'nsbs.json')
      lin_alg_op(merge_json_sbs.out.json_merge, merge_json_nsbs.out.json_merge, params.json4)
      apply_nsbs_alignment(params.input, lin_alg_op.out.json_transform,params.folder_nsbs,ranges_ch)
+     merge_folder_prealign(apply_nsbs_alignment.out.tif_files.collect(),'nsbs_align')
      generate_elastix_params(params.default_elastix, params.transform_amst, params.elx)
-     amst(apply_nsbs_alignment.out.tif_files.collect(),params.out_amst,generate_elastix_params.out.elastix_default_params,ranges_ch)
+     amst(merge_folder_prealign.out.full_out.collect(),params.out_amst,generate_elastix_params.out.elastix_default_params,ranges_ch)
      merge_amst(amst.out.transform.collect(),'amst_json')
-     apply_amst_alignment(apply_nsbs_alignment.out.tif_files.collect(), merge_amst.out.json_merge,params.folder_amst,ranges_ch)
-}
+     apply_amst_alignment(merge_folder_prealign.out.full_out.collect(), merge_amst.out.json_merge,params.folder_amst,ranges_ch)
+     merge_folder_amst(apply_amst_alignment.out.tif_files.collect(),'amst')
+}   
