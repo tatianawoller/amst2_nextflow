@@ -1,0 +1,62 @@
+nextflow_process {
+
+    name "Test matrices operation"
+    script "../main.nf"
+    process "LINALG_OP"
+    tag "prealignment"
+    tag "matrices operation"
+
+    test("matrices operation") {
+
+        when {
+            params {
+               module_args= "--keep_meta 0 "
+            }
+            process {
+                config "/home/tatiana/vib_bic_nextflow/amst2_nextflow/modules/local/sq_matrices_op/tests/nextflow.config"
+                """
+                input[0] = tuple (
+                file("/home/tatiana/test_amst2/json_files/sbs.json"),
+                file("/home/tatiana/test_amst2/json_files/nsbs.json"),                  
+                "prealigned.json")
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert process.out.json_transform.size() >= 1 },
+                { assert path(process.out.json_transform[0]).exists() },
+                {assert snapshot(process.out.json_transform[0]).match("matrices operation")}
+            )
+        }
+    }
+
+    test("stub") {
+
+        options "-stub"
+
+        when {
+            params {
+               module_args= "--keep_meta 0 "
+            }
+            process {
+                config "/home/tatiana/vib_bic_nextflow/amst2_nextflow/modules/local/sq_matrices_op/tests/nextflow.config"
+                """
+                input[0] = tuple(
+                file("/home/tatiana/test_amst2/json_files/sbs.json"),
+                file("/home/tatiana/test_amst2/json_files/nsbs.json"),                   
+                "prealigned.json")
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match()}
+            )
+        }
+    }
+}

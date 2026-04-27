@@ -1,1 +1,0 @@
-# amst2_nextflow

@@ -1,0 +1,35 @@
+{
+    "matrices operation": {
+        "content": [
+            "prealigned.json:md5,6243564fae7194e150f2fd9b3f6cb71c"
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.4"
+        },
+        "timestamp": "2026-04-27T18:35:24.133966594"
+    },
+    "stub": {
+        "content": [
+            {
+                "0": [
+                    "prealigned.json:md5,d41d8cd98f00b204e9800998ecf8427e"
+                ],
+                "1": [
+                    "versions.yml:md5,277cb0dd8d81e331f9e3ac2d1adf7da7"
+                ],
+                "json_transform": [
+                    "prealigned.json:md5,d41d8cd98f00b204e9800998ecf8427e"
+                ],
+                "versions": [
+                    "versions.yml:md5,277cb0dd8d81e331f9e3ac2d1adf7da7"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.4"
+        },
+        "timestamp": "2026-04-27T18:35:33.018859321"
+    }
+}

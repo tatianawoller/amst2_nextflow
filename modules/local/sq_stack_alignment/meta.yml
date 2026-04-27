@@ -1,0 +1,46 @@
+name: "elastix_stack_alignment"
+description: Perform stack alignment using Elastix
+keywords:
+  - alignment
+  - elastix
+  - image registration
+  - microscopy
+tools:
+  - "squirrel":
+      description: "Image registration and analysis toolkit"
+      homepage: "https://github.com/jhennies/squirrel"
+      documentation: "https://github.com/jhennies/squirrel"
+      tool_dev_url: "https://github.com/jhennies/squirrel"
+      licence: "['MIT']"
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - input_path:
+      type: path
+      description: Path to input image stack
+      pattern: "*"
+  - json_name:
+      type: string
+      description: Name for output JSON file
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+  - json_transform:
+      type: file
+      description: JSON file containing transformation parameters
+      pattern: "*.json"
+
+authors:
+  - "@your_github_username"

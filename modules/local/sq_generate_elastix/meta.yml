@@ -1,0 +1,38 @@
+name: "sq_generate_elastix"
+description: Generate Elastix parameter files for AMST alignment
+keywords:
+  - elastix
+  - parameters
+  - configuration
+  - image registration
+tools:
+  - "squirrel":
+      description: "Image registration and analysis toolkit"
+      homepage: "https://github.com/jhennies/squirrel"
+      documentation: "https://github.com/jhennies/squirrel"
+      tool_dev_url: "https://github.com/jhennies/squirrel"
+      licence: "['MIT']"
+
+input:
+  - default_elastix:
+      type: string
+      description: Default Elastix parameter file name
+  - transform_amst:
+      type: string
+      description: Transformation type for AMST
+  - elx_params:
+      type: string
+      description: Additional Elastix parameters
+
+output:
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+  - elastix_params:
+      type: file
+      description: Generated Elastix parameter file
+      pattern: "elastix_params.txt"
+
+authors:
+  - "@your_github_username"

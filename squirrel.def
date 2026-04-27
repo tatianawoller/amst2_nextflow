@@ -1,0 +1,21 @@
+Bootstrap: docker
+From: continuumio/miniconda3
+
+%files
+
+%runscript
+exec "$@"
+
+%environment
+CONDA_BIN_PATH="/opt/conda/bin"    
+export PATH="$CONDA_BIN_PATH:$PATH"
+export PATH="/opt/conda/envs/squirrel-env/bin:$PATH"
+
+%post   
+apt-get update -y   
+apt install -y build-essential git
+export PATH="/opt/conda/bin:$PATH"      
+conda create --name squirrel-env -c bioconda -c conda-forge --override-channels python=3.11 nibabel opencv zarr=2 vigra pandas
+/opt/conda/envs/squirrel-env/bin/pip install --upgrade pip
+/opt/conda/envs/squirrel-env/bin/pip install SimpleITK-SimpleElastix transforms3d pyvsnr
+/opt/conda/envs/squirrel-env/bin/pip install git+https://github.com/jhennies/squirrel.git

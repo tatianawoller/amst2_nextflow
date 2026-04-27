@@ -1,0 +1,51 @@
+name: "sq_amst"
+description: Perform AMST (Automated Multi-Stack Alignment) registration
+keywords:
+  - amst
+  - alignment
+  - multi-stack
+  - image registration
+  - microscopy
+tools:
+  - "squirrel":
+      description: "Image registration and analysis toolkit"
+      homepage: "https://github.com/jhennies/squirrel"
+      documentation: "https://github.com/jhennies/squirrel"
+      tool_dev_url: "https://github.com/jhennies/squirrel"
+      licence: "['MIT']"
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - aligned_images:
+      type: directory
+      description: Directory containing pre-aligned images
+      pattern: "*_align"
+  - output_json:
+      type: string
+      description: Name for output JSON file
+  - elastix_params:
+      type: file
+      description: Elastix parameter file
+      pattern: "*.txt"
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+  - json_transform:
+      type: file
+      description: JSON file containing AMST transformation parameters
+      pattern: "*.json"
+
+authors:
+  - "@your_github_username"

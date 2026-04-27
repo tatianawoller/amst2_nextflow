@@ -1,0 +1,37 @@
+{
+    "amst": {
+        "content": null,
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.4"
+        },
+        "timestamp": "2026-04-27T18:44:24.403136309"
+    },
+    "stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,4bab075847aaafe1082f3b1b8678cc0a"
+                ],
+                "json_transform": [
+                    [
+                        
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,4bab075847aaafe1082f3b1b8678cc0a"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.4"
+        },
+        "timestamp": "2026-04-27T18:44:31.48944588"
+    }
+}

@@ -1,0 +1,50 @@
+name: "linalg_op"
+description: Perform linear algebra operations on transformation matrices
+keywords:
+  - linear algebra
+  - transformation
+  - matrix operations
+  - image registration
+tools:
+  - "squirrel":
+      description: "Image registration and analysis toolkit"
+      homepage: "https://github.com/jhennies/squirrel"
+      documentation: "https://github.com/jhennies/squirrel"
+      tool_dev_url: "https://github.com/jhennies/squirrel"
+      licence: "['MIT']"
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - json1:
+      type: file
+      description: First JSON transformation file
+      pattern: "*.json"
+  - json2:
+      type: file
+      description: Second JSON transformation file
+      pattern: "*.json"
+  - output_json:
+      type: string
+      description: Name for output JSON file
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+  - json_transform:
+      type: file
+      description: Combined JSON transformation file
+      pattern: "*.json"
+
+authors:
+  - "@your_github_username"

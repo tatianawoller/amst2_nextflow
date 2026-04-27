@@ -1,0 +1,72 @@
+{
+    "apply_alignment_sbs": {
+        "content": [
+            [
+                "slice_0000.tif:md5,733360b5841621d6313a15b9eb4e9cc1",
+                "slice_0001.tif:md5,6e609820d3f32731d1336b7a34d6c10c",
+                "slice_0002.tif:md5,0f28f6c7e5533fa9ba3bc110c4dcc5ae",
+                "slice_0003.tif:md5,e8061647cc3d71570aba5c90e506d547",
+                "slice_0004.tif:md5,3cca83a431de9af2eb35219bb84ef9d1",
+                "slice_0005.tif:md5,b7fd13c798259d44f9791fc28a51ab0a",
+                "slice_0006.tif:md5,284a5a697bf7171b026170ee19b8ec10",
+                "slice_0007.tif:md5,c102341b7960fbfc06809fdc2c7df9c1",
+                "slice_0008.tif:md5,b904b7777c16b6a3c9e53a41699eafc3",
+                "slice_0009.tif:md5,55eefaac25509106efb547f8b0c1f0cd",
+                "slice_0010.tif:md5,6d4f625c41a27f48d14288e7c0f0eb5d",
+                "slice_0011.tif:md5,a85efdcc2da91623a3f53b8099bdb2ac",
+                "slice_0012.tif:md5,52d5403d9ca9081a4cf8f8e2e898c477",
+                "slice_0013.tif:md5,1704d8e6881b7739df05d96e825a4208",
+                "slice_0014.tif:md5,fe74c97ce3fa7bea762dad28d0ea78c7",
+                "slice_0015.tif:md5,052e2b7e4a9e90a8ee7c872bb8b241f4",
+                "slice_0016.tif:md5,ce858a8c56272920c9691d6d6fe494ce",
+                "slice_0017.tif:md5,5d9f93c9bb1e11c0ccb23b71f3db42d5",
+                "slice_0018.tif:md5,f21157db029b66cb530316374b5e343a",
+                "slice_0019.tif:md5,8217032761ba6472db45222850ca14a7",
+                "slice_0020.tif:md5,25feae6d88d4d25e85efc2d74ac726bf",
+                "slice_0021.tif:md5,0c722699a922bc9e37987f2096c30bcf",
+                "slice_0022.tif:md5,505d9cfff24a5f064f89cf158c4a0d1d",
+                "slice_0023.tif:md5,debc7d41304937f930180ad6673b7f7f",
+                "slice_0024.tif:md5,bc100f8f38b7959c1d906f679ed8642d",
+                "slice_0025.tif:md5,c6a83a79f0b28d7d99c4edb1f4518be8",
+                "slice_0026.tif:md5,8596daadae10e5f9ed7727214982e534",
+                "slice_0027.tif:md5,34afd3598bdc4b021949dfd2f464b7c3",
+                "slice_0028.tif:md5,88e33a9276739b2fa7a827828b295ac2",
+                "slice_0029.tif:md5,308c383ab85f703392ecebf1ff216c59",
+                "slice_0030.tif:md5,fd5c8b28c89da72d687e246fbed183da",
+                "slice_0031.tif:md5,7f573b11340c867335789ecfa1639e51"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.4"
+        },
+        "timestamp": "2026-04-27T18:34:23.088444406"
+    },
+    "stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        "dummy.tif:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,bb5839331499050e7984d31d32a9327e"
+                ],
+                "aligned": [
+                    [
+                        "dummy.tif:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,bb5839331499050e7984d31d32a9327e"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.4"
+        },
+        "timestamp": "2026-04-27T18:34:32.780623347"
+    }
+}

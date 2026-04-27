@@ -1,37 +1,15 @@
-# AMST2_nextflow
+# Notes de TW, ne pas effacer
 
-## Plan
-- run prealign_amst2 using a conda environment or apptainer based on squirrel ✔️
-- run prealign_amst2 using  apptainer based on squirrel ✔️
-- implementation subworkflow ✔️
-- implement 2 use cases: prealign + amst ( from amst2), amst  as 2 nextflow subworkflows within a AMST2 nextflow module using conda ✔️
-- test 2 use cases: prealign + amst ( from amst2), amst subworkflows within a AMST2 nextflow module using docker  ✔️
-- test on hpc ✔️
-
-## Current state
-- prealignment works as a python script and a nextflow workflow
-- :construction: amst is only tested on the test data that was aligned with TM,using a dummy transformation but (apply_multi_step_stack_alignment_workflow ) does not lead to any new file
-
-## Test data
-- for alignment: 1st 32 slide of raw data at https://www.ebi.ac.uk/empiar/EMPIAR-10311/
-- for amst (w/o prealignment): 1st 32 slide of data aligned with TM at https://www.ebi.ac.uk/empiar/EMPIAR-10311/
-
-## Installation
-- see the general part of squirrel + registration + pyyaml [squirrel](https://github.com/jhennies/squirrel/tree/main)
-
-## Usage
-```bash
-# for registration and so far I have added the prealignment.py in squirrel
-python  prealignment.py
-# for amst and so far I have added the amst.py in squirrel
-python  amst.py
-# when nextflow is available
-nextflow main_subworkflow.nf -profile conda 
-# to test the align validation
-# works when changing line 326 in elastix.py by if auto_mask is not None and auto_mask is not False:
-# check y_max
-stack_alignment_validation /home/twoller/AMST2/results/amst/amst /home/twoller/AMST2/results/amst/val "13,536,2050,32,256,256" --out_name test --y_max 10'
-# how to have multiple plots in one plot ?
-# how to run in a workflow
-nextflow run main_workflow -c nextflow_EM.config
-```
+- how to run
+  ```bash
+  module load Nextflow
+  # run in local
+  nextflow run main_subworkflow.nf -c nextflow_nf.config -profile conda_wsl/apptainer_wsl/docker_wsl
+  # run on the cluster (i.e. from university using the nf-core config)
+  module load Nextflow
+  nextflow run main_workflow.nf  - profile vsc_kul_uhasselt,genius,apptainer_tier2 --basepath .
+  # run tests
+  nf-test test --profile conda ./modules/local/amst/tests/main.nf.test
+  ```
+- nb: the vsc_kul_uhasselt can be replaced by embl, genius by your local cluster. 
+- apptainer_tier2 corresponds to the customed parameters for a specific cluster

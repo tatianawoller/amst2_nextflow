@@ -1,0 +1,51 @@
+name: "elastix_apply_multi_stack_alignment"
+description: Apply multi-stack alignment using Elastix transformations
+keywords:
+  - alignment
+  - elastix
+  - image registration
+  - microscopy
+  - transformation
+tools:
+  - "squirrel":
+      description: "Image registration and analysis toolkit"
+      homepage: "https://github.com/jhennies/squirrel"
+      documentation: "https://github.com/jhennies/squirrel"
+      tool_dev_url: "https://github.com/jhennies/squirrel"
+      licence: "['MIT']"
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - input_path:
+      type: path
+      description: Path to input image stack
+      pattern: "*"
+  - json_transform:
+      type: file
+      description: JSON file containing transformation parameters
+      pattern: "*.json"
+  - output_folder:
+      type: string
+      description: Name for output folder
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+  - aligned_images:
+      type: directory
+      description: Directory containing aligned images
+      pattern: "*_align"
+
+authors:
+  - "@your_github_username"

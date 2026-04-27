@@ -1,0 +1,61 @@
+nextflow_process {
+
+    name "Test Process stack_alignment"
+    script "../main.nf"
+    process "ELASTIX_STACK_ALIGNMENT"
+    tag "prealignment"
+    tag "stack_alignment"
+
+    test("stack_alignment_sbs") {
+
+        when {
+            params {
+               module_args= "--determine_bounds --initialize_offsets_method init_elx  --gaussian_sigma 2  --transform translation --auto_mask non-zero --z_step 1 "
+            }
+            process {
+                config "/home/tatiana/vib_bic_nextflow/amst2_nextflow/local/sq_stack_alignment/tests/nextflow.config"
+                """
+                input[0] = tuple(
+                    "/home/tatiana/test_amst2/input",                    
+                    "sbs.json",
+                )
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert process.out.json_transform.size() >= 1 },
+                { assert path(process.out.json_transform[0]).exists() },
+                {assert snapshot(process.out.json_transform[0]).match("stack_alignment_sbs")}
+            )
+        }
+    }
+    test("stub") {
+
+        options "-stub"
+
+        when {
+            params {
+               module_args= "--determine_bounds --initialize_offsets_method init_elx  --gaussian_sigma 2  --transform translation --auto_mask non-zero --z_step 1 "
+            }
+            process {
+                config "/home/tatiana/vib_bic_nextflow/amst2_nextflow/local/sq_stack_alignment/tests/nextflow.config"
+                """
+                input[0]  = tuple(
+                    "/home/tatiana/input_amst/input",                    
+                    "sbs.json",
+                )
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match()}
+            )
+        }
+    }
+}

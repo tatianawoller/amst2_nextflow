@@ -1,0 +1,35 @@
+{
+    "stack_alignment_nsbs": {
+        "content": [
+            "nsbs.json:md5,91414cdb2c2ebf1e13da40790ca85c30"
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.4"
+        },
+        "timestamp": "2026-04-27T17:55:53.227915046"
+    },
+    "stub": {
+        "content": [
+            {
+                "0": [
+                    "nsbs.json:md5,d41d8cd98f00b204e9800998ecf8427e"
+                ],
+                "1": [
+                    "versions.yml:md5,5eca721a71f1f82c0540b81a8a4155ac"
+                ],
+                "json_transform": [
+                    "nsbs.json:md5,d41d8cd98f00b204e9800998ecf8427e"
+                ],
+                "versions": [
+                    "versions.yml:md5,5eca721a71f1f82c0540b81a8a4155ac"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.4"
+        },
+        "timestamp": "2026-04-27T17:56:00.568658254"
+    }
+}

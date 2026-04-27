@@ -1,0 +1,63 @@
+nextflow_process {
+
+    name "Test applying producing transform images based on a json file or any transformation files"
+    script "../main.nf"
+    process "ELASTIX_APPLY_MULTI_STACK_ALIGNMENT"
+    tag "prealignment_amst"
+    tag "apply_multi_alignment"
+
+    test("apply_alignment_sbs") {
+
+        when {
+            params {
+               module_args= "--auto_pad "
+            }
+            process {
+                config "/home/tatiana/vib_bic_nextflow/amst2_nextflow/modules/local/sq_apply_multi_stack_alignment/tests/nextflow.config"
+                """
+                input[0] = tuple(
+                "/home/tatiana/test_amst2/input",                    
+                file("/home/tatiana/test_amst2/json_files/sbs.json"),
+                "sbs_align")
+                """
+            }
+        }
+
+       then {
+          assertAll(
+               { assert process.success },
+                { assert process.out.aligned.size() >= 1},
+                { assert path(process.out.aligned[0]).exists() },
+                {assert snapshot(process.out.aligned[0]).match("apply_alignment_sbs")}
+            )
+        }
+    }
+    
+
+    test("stub") {
+
+        options "-stub"
+
+        when {
+            params {
+               module_args= "--auto_pad "
+            }
+            process {
+                config "/home/tatiana/vib_bic_nextflow/amst2_nextflow/modules/local/sq_apply_multi_stack_alignment/tests/nextflow.config"
+                """
+                input[0] =  tuple(
+                "/home/tatiana/input_amst/input",                    
+                file("/home/tatiana/test_amst2/json_files/sbs.json"),
+                "sbs_align")
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match()}
+            )
+        }
+    }
+}
