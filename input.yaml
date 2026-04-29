@@ -1,0 +1,30 @@
+# Main parameters to change
+input: /home/tatiana/input_amst/input/
+outdir: /home/tatiana/test_tw
+
+# pre-alignment parameters to change
+gaussian_sigma:  2
+z_step0: 1
+z_step1: 8
+init_offset_meth:  init_elx
+transform:  translation
+automask: non-zero
+keepmeta: 0
+batch_size: 8
+    
+# amst2 parameters to change
+median_radius: 7
+transform_amst: bspline
+default_transform: amst-bspline
+elx: "FinalGridSpacingInPhysicalUnits:128 GridSpacingSchedule:2.0,1.4,1.2,1.0"
+
+# fixed parameters
+folder_sbs: sbs_align
+folder_nsbs: nsbs_align 
+folder_amst:  amst
+json_sbs: sbs.json
+json_nsbs: nsbs.json
+output_sbs: sbs_aligned
+json_combined: prealigned.json
+out_amst: transforms.json
+default_elastix: elastix-params-amst.txt

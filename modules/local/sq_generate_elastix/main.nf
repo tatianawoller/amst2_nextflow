@@ -5,7 +5,7 @@ process SQ_GENERATE_ELASTIX {
     tuple val(filename_elastix),val(transform), val(elx_params)
 
     output:
-    path("elastix-params-amst-gs256.txt"), emit: elastix_default_params
+    path("${filename_elastix}"), emit: elastix_default_params
     path "versions.yml"      , emit: versions
 
     when:
@@ -23,7 +23,7 @@ process SQ_GENERATE_ELASTIX {
     """
     stub:
     """
-    touch elastix-params-amst-gs256.txt
+    touch $filename_elastix
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

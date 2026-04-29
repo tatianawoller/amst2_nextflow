@@ -13,7 +13,7 @@ workflow {
         params.folder_sbs,
         params.json_nsbs, 
         params.folder_nsbs,
-        params.json4)
+        params.json_combined)
     AMST2_AMST(
         params.default_elastix, 
         params.default_transform, 
