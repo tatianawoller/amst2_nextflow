@@ -16,130 +16,106 @@ include {MERGE_FOLDER as merge_folder; MERGE_FOLDER as merge_folder_prealign; ME
 workflow {
     input_dir = file(params.input)
     def file_count = input_dir.list().size()
-    def batch_size = params.batch_size
-
-    // Create ranges channel - each emission is a tuple [start, end]
-    ranges_ch = channel.of(0..<file_count)
-        .collate(batch_size)
-        .map { batch ->
-            def start = batch[0]
-            def end = batch[-1] + 1
-            tuple(start, end)
+    def batch_size = params.batch_size 
+    
+    // Calculate number of batches correctly
+    def num_batches = Math.ceil(file_count / batch_size).intValue()
+    
+    // Create metadata-rich ranges channel with correct end calculation
+    ranges_ch = channel.of(0..<num_batches)
+        .map { batch_idx ->
+            def start = batch_idx * batch_size
+            def end = Math.min(start + batch_size, file_count )
+            
+            // Skip empty batches (shouldn't happen with correct calculation, but safety check)
+            if (start >= file_count) {
+                return null
+            }
+            
+            def meta = [
+                batch_id: batch_idx,
+                start: start,
+                end: end,
+                range_str: "${start}_${end}",
+                file_count: end - start
+            ]
+            [meta, start, end]
         }
-
-    // =========================================================================
-    // Step 1: SBS alignment per batch -> produces sbs_<start>_<end>.json
-    // =========================================================================
+        .filter { it != null }
+        .view()
     sbs_alignment(input_dir, ranges_ch)
 
-    // Collect JSON outputs sorted by start index to guarantee order
-    // File names are sbs_<start>_<end>.json - sort by the start index
     ch_sbs_json_sorted = sbs_alignment.out.json_transform
-        .toSortedList { a, b ->
-            def aIdx = (a.name =~ /(\d+)_(\d+)/)[0][1].toInteger()
-            def bIdx = (b.name =~ /(\d+)_(\d+)/)[0][1].toInteger()
-            aIdx <=> bIdx
-        }
-
+        .toSortedList { a, b -> a[0].batch_id <=> b[0].batch_id }
+        .map { sorted_list -> sorted_list.collect { _meta, file -> file } }
+    
     merge_json_sbs(ch_sbs_json_sorted, 'sbs.json')
-
-    // =========================================================================
-    // Step 2: Apply SBS alignment to all batches
-    // merge_json_sbs receives only value-channel inputs, so its output is a
-    // singleton (value channel) that naturally broadcasts to all ranges_ch items
-    // =========================================================================
+    
     ch_sbs_merged = merge_json_sbs.out.json_merge
-
     apply_sbs_alignment(params.input, ch_sbs_merged, params.folder_sbs, ranges_ch)
-
-    // Collect folders sorted by start index
     ch_sbs_folders_sorted = apply_sbs_alignment.out.tif_files
-        .toSortedList { a, b ->
-            def aStart = (a.name =~ /(\d+)_(\d+)/)[0][1].toInteger()
-            def bStart = (b.name =~ /(\d+)_(\d+)/)[0][1].toInteger()
-            aStart <=> bStart
-        }
-
+        .toSortedList { a, b -> a[0].batch_id <=> b[0].batch_id }
+        .map { sorted_list -> sorted_list.collect { _meta, folder -> folder } }
+    
     merge_folder(ch_sbs_folders_sorted, 'sbs_align')
+   // merge_folder_sorted = merge_folder.out.full_out
+  //  .toSortedList { a, b -> a.toString() <=> b.toString() }
 
-    // =========================================================================
-    // Step 3: NSBS alignment on merged SBS folder
-    // merge_folder receives only value-channel inputs -> singleton output
-    // =========================================================================
-    ch_sbs_align_dir = merge_folder.out.full_out
+    //nsbs_alignment(merge_folder_sorted, ranges_ch)
 
-    nsbs_alignment(ch_sbs_align_dir, ranges_ch)
+    //ch_nsbs_json_sorted = nsbs_alignment.out.json_transform
+    //     .toSortedList { a, b -> a[0].batch_id <=> b[0].batch_id }
+   //      .map { sorted_list -> sorted_list.collect { _meta, file -> file } }
+    
+   // merge_json_nsbs(ch_nsbs_json_sorted, 'nsbs.json')
+  //  lin_alg_op(ch_sbs_merged, merge_json_nsbs.out.json_merge, params.json4)
+   // ch_prealign_json = lin_alg_op.out.json_transform
+   // input_dir.list().findAll{ it.isFile() }.sort{ it.getName() }
+   // apply_nsbs_alignment(params.sorted_files, ch_prealign_json, params.folder_nsbs, ranges_ch)
+   // ch_nsbs_folders_sorted = apply_nsbs_alignment.out.tif_files
+   //      .toSortedList { a, b -> a[0].batch_id <=> b[0].batch_id }
+   //      .map { sorted_list -> sorted_list.collect { _meta, folder -> folder } }
+    
+   // merge_folder_prealign(ch_nsbs_folders_sorted, 'nsbs_align')
 
-    // Collect NSBS JSON outputs sorted by start index
-    ch_nsbs_json_sorted = nsbs_alignment.out.json_transform
-        .toSortedList { a, b ->
-            def aIdx = (a.name =~ /(\d+)_(\d+)/)[0][1].toInteger()
-            def bIdx = (b.name =~ /(\d+)_(\d+)/)[0][1].toInteger()
-            aIdx <=> bIdx
-        }
+ 
+    // // =========================================================================
+    // // Step 6: Generate elastix params (runs once)
+    // // =========================================================================
+    // generate_elastix_params(params.default_elastix, params.transform_amst, params.elx)
 
-    merge_json_nsbs(ch_nsbs_json_sorted, 'nsbs.json')
+    // // =========================================================================
+    // // Step 7: AMST per batch on prealigned data
+    // // =========================================================================
+    // ch_prealigned_dir = merge_folder_prealign.out.full_out
+    // ch_elastix_params = generate_elastix_params.out.elastix_default_params
 
-    // =========================================================================
-    // Step 4: Linear algebra op (combine SBS + NSBS transforms)
-    // Both inputs are single-emission channels
-    // =========================================================================
-    lin_alg_op(ch_sbs_merged, merge_json_nsbs.out.json_merge, params.json4)
+    // amst(ch_prealigned_dir, params.out_amst, ch_elastix_params, ranges_ch)
 
-    // =========================================================================
-    // Step 5: Apply NSBS (pre-alignment) to all batches
-    // =========================================================================
-    ch_prealign_json = lin_alg_op.out.json_transform
+    // // Collect AMST transform folders sorted by start index
+    // ch_amst_transforms_sorted = amst.out.transform
+    //     .toSortedList { a, b ->
+    //         def aStart = (a.name =~ /(\d+)_(\d+)/)[0][1].toInteger()
+    //         def bStart = (b.name =~ /(\d+)_(\d+)/)[0][1].toInteger()
+    //         aStart <=> bStart
+    //     }
 
-    apply_nsbs_alignment(params.input, ch_prealign_json, params.folder_nsbs, ranges_ch)
+    // merge_amst(ch_amst_transforms_sorted, 'amst_json')
 
-    // Collect prealign folders sorted by start index
-    ch_nsbs_folders_sorted = apply_nsbs_alignment.out.tif_files
-        .toSortedList { a, b ->
-            def aStart = (a.name =~ /(\d+)_(\d+)/)[0][1].toInteger()
-            def bStart = (b.name =~ /(\d+)_(\d+)/)[0][1].toInteger()
-            aStart <=> bStart
-        }
+    // // =========================================================================
+    // // Step 8: Apply AMST alignment to all batches
+    // // =========================================================================
+    // ch_amst_merged = merge_amst.out.json_merge
 
-    merge_folder_prealign(ch_nsbs_folders_sorted, 'nsbs_align')
+    // apply_amst_alignment(ch_prealigned_dir, ch_amst_merged, params.folder_amst, ranges_ch)
 
-    // =========================================================================
-    // Step 6: Generate elastix params (runs once)
-    // =========================================================================
-    generate_elastix_params(params.default_elastix, params.transform_amst, params.elx)
+    // // Collect AMST aligned folders sorted by start index
+    // ch_amst_folders_sorted = apply_amst_alignment.out.tif_files
+    //     .toSortedList { a, b ->
+    //         def aStart = (a.name =~ /(\d+)_(\d+)/)[0][1].toInteger()
+    //         def bStart = (b.name =~ /(\d+)_(\d+)/)[0][1].toInteger()
+    //         aStart <=> bStart
+    //     }
 
-    // =========================================================================
-    // Step 7: AMST per batch on prealigned data
-    // =========================================================================
-    ch_prealigned_dir = merge_folder_prealign.out.full_out
-    ch_elastix_params = generate_elastix_params.out.elastix_default_params
-
-    amst(ch_prealigned_dir, params.out_amst, ch_elastix_params, ranges_ch)
-
-    // Collect AMST transform folders sorted by start index
-    ch_amst_transforms_sorted = amst.out.transform
-        .toSortedList { a, b ->
-            def aStart = (a.name =~ /(\d+)_(\d+)/)[0][1].toInteger()
-            def bStart = (b.name =~ /(\d+)_(\d+)/)[0][1].toInteger()
-            aStart <=> bStart
-        }
-
-    merge_amst(ch_amst_transforms_sorted, 'amst_json')
-
-    // =========================================================================
-    // Step 8: Apply AMST alignment to all batches
-    // =========================================================================
-    ch_amst_merged = merge_amst.out.json_merge
-
-    apply_amst_alignment(ch_prealigned_dir, ch_amst_merged, params.folder_amst, ranges_ch)
-
-    // Collect AMST aligned folders sorted by start index
-    ch_amst_folders_sorted = apply_amst_alignment.out.tif_files
-        .toSortedList { a, b ->
-            def aStart = (a.name =~ /(\d+)_(\d+)/)[0][1].toInteger()
-            def bStart = (b.name =~ /(\d+)_(\d+)/)[0][1].toInteger()
-            aStart <=> bStart
-        }
-
-    merge_folder_amst(ch_amst_folders_sorted, 'amst')
+    // merge_folder_amst(ch_amst_folders_sorted, 'amst')
 }

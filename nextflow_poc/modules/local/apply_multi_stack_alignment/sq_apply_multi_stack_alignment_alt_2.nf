@@ -3,16 +3,16 @@ process ELASTIX_APPLY_MULTI_STACK_ALIGNMENT {
     input:
     path(input)
     //path(input, name: "input_dir/*")
-    path(json_name)
+    val(json_name)
     val(align_folder)
-    tuple val(meta), val(start), val(end)
+    tuple val(start), val(end)
  
 
     output:
-    tuple val(meta), path("${align_folder}${meta.range_str}"), emit: tif_files
+    path("${align_folder}${start}_${end}"), emit: tif_files
 
     script:
-   // def args = task.ext.args ?: ''
+    def args = task.ext.args ?: ''
     """
     mkdir -p ${align_folder}${start}_${end}
     if [ -d "${input}" ]; then
@@ -23,7 +23,7 @@ process ELASTIX_APPLY_MULTI_STACK_ALIGNMENT {
        cp ${input} data_folder/
 
     fi
-    sq-elastix-apply_multi_step_stack_alignment   data_folder $json_name ${align_folder}${start}_${end} --n_workers ${task.cpus} --z_range ${start} ${end} 
+    sq-elastix-apply_multi_step_stack_alignment   data_folder $json_name ${align_folder}${start}_${end} --n_workers ${task.cpus} --z_range ${start} ${end} $args
 
     """
     stub:

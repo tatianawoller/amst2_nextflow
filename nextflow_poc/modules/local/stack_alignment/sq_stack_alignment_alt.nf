@@ -1,10 +1,10 @@
 process ELASTIX_STACK_ALIGNMENT {
     label 'process_cpu_medium'  
     input: path(input_dir)
-    tuple val(meta), val(start), val(end)
+    tuple val(start), val(end)
 
     output:
-    tuple val(meta), path("sbs_${meta.range_str}.json"), emit: json_transform
+    path "sbs_${start}_${end}.json", emit: json_transform
 
     script:
     def args = task.ext.args ?: ''
