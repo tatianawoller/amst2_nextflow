@@ -12,14 +12,13 @@ def create_argument_parser():
     parser.add_argument('--json_file', type=str, help='output_json')
     return parser
 
-def get_start_idx(p):
-    parts = Path(p).stem.split('_')
-    return int(parts[-2])
-
-def concatenate_json_file(trans, json_file: str):
-    trans_list = [x for x in trans.split(',') if x]
-    trans_list = sorted(trans_list, key=get_start_idx)
-    transform_filepaths = [os.path.abspath(i) for i in trans_list]
+def concatenate_json_file(trans,json_file:str):
+    '''description'''
+    cwd=os.getcwd()
+    trans_list=trans.split(',')
+    trans_list=sorted(trans_list, key=lambda x: int(x.split('_')[1]))
+    cwd=os.getcwd()
+    transform_filepaths=[ os.path.join(cwd,i) for i in trans_list]
     transforms = load_affine_stack_from_multiple_files(transform_filepaths, sequence_stack=False)
     transforms = transforms.get_sequenced_stack()
     transforms.to_file(json_file)

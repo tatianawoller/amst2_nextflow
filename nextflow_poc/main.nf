@@ -15,6 +15,7 @@ include {MERGE_FOLDER as merge_folder; MERGE_FOLDER as merge_folder_prealign; ME
 
 workflow {
     input_dir = file(params.input)
+    params_input2=params.input
     def file_count = input_dir.list().size()
     def batch_size = params.batch_size 
     
@@ -52,7 +53,7 @@ workflow {
     merge_json_sbs(ch_sbs_json_sorted, 'sbs.json')
     
     ch_sbs_merged = merge_json_sbs.out.json_merge
-    apply_sbs_alignment(params.input, ch_sbs_merged, params.folder_sbs, ranges_ch)
+    apply_sbs_alignment(params_input2, ch_sbs_merged, params.folder_sbs, ranges_ch)
     ch_sbs_folders_sorted = apply_sbs_alignment.out.tif_files
         .toSortedList { a, b -> a[0].batch_id <=> b[0].batch_id }
         .map { sorted_list -> sorted_list.collect { _meta, folder -> folder } }
